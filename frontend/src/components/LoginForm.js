@@ -21,14 +21,23 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
     auth.authorize(password, email)
 
       .then(data => {
-        if (data.token) {
-          localStorage.setItem('jwt', data.token);
+        // if (data.token) {
+        //   localStorage.setItem('jwt', data.token);
+        // if (data._id) {
+        //   localStorage.setItem('userId', data._id);
+        //   setLoggedIn(true)
+        //   // setUser(formValue.email)
+        //   // setUser(data.email);
+        //   handleLogin(formValue.email)
+        //   navigate("/", { replace: true });
+        // }
+
           setLoggedIn(true)
           // setUser(formValue.email)
           // setUser(data.email);
           handleLogin(formValue.email)
           navigate("/", { replace: true });
-        }
+
       })
       .catch((err) => {
         onInfoTooltipOpen({ isOpen: true, status: false });

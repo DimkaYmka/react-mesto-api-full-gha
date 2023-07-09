@@ -1,5 +1,5 @@
 const apiOptions = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62',
+  baseUrl: 'http://localhost:3000',
   baseAuthUrl: 'https://auth.nomoreparties.co',
   headers: {
     authorization: 'bc440bce-88d2-40de-813f-9186a5211a71',
@@ -32,12 +32,20 @@ class Api {
 
 
     // 
+    // getUserData() {
+    //   return fetch(`${this._baseUrl}/users/me`, {
+    //       method: 'GET',
+    //       headers: this._headers,
+    //     })
+    //     .then(this._getResponse)
+    // }
+
     getUserData() {
       return fetch(`${this._baseUrl}/users/me`, {
-          method: 'GET',
-          headers: this._headers,
-        })
-        .then(this._getResponse)
+        headers: this._headers,
+        credentials: 'include',
+      })
+      .then(this._getResponse)
     }
   
     // 

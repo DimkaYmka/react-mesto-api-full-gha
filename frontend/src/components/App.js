@@ -130,9 +130,18 @@ function App() {
   }
 
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.getContent(jwt)
+    // const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('userId');
+    // if (jwt) {
+    //   auth.getContent(jwt)
+    //     .then(({ data }) => {
+    //       setLoggedIn(true);
+    //       setUser(data.email);
+    //       handleLogin(data.email)
+    //       navigate('/', {replace: true})
+    //     })
+
+      auth.getContent()
         .then(({ data }) => {
           setLoggedIn(true);
           setUser(data.email);
@@ -140,7 +149,7 @@ function App() {
           navigate('/', {replace: true})
         })
         .catch(err => console.log(err));
-    }
+ 
   }
 
   useEffect(() => {
