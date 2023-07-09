@@ -1,0 +1,38 @@
+.popup__input {
+  /* margin-bottom: 30px;*/
+  display: flex;
+  margin: 0 auto;
+  width: 358px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0 0 9px;
+}
+
+/* .popup__input:nth-child(odd) {
+  margin-top: 39px;
+} */
+
+@media screen and (max-width: 768px) {
+  .popup__input:nth-child(odd) {
+    /* margin-top: 67px; */
+    width: 238px;
+  }
+}
+
+/* .popup__input:nth-child(even) {
+  margin-top: 21px;
+
+} */
+
+@media screen and (max-width: 768px) {
+  .popup__input:nth-child(even) {
+    /* margin-top: 22px; */
+    width: 238px;
+  }
+}

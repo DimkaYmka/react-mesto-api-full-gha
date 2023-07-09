@@ -1,0 +1,51 @@
+
+.profile__avatar-button {
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__avatar-button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: opacity .4s ease-in;
+  background-color: #000;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.profile__avatar-button:hover::before {
+  opacity: .8;
+  border-radius: 50%;
+}
+
+.profile__avatar-button::after {
+  background-image: url('../../../images/VectorAvatar.svg');
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity .4s ease-in;
+}
+
+.profile__avatar-button:hover::after {
+  opacity: .8;
+  border-radius: 50%;
+}

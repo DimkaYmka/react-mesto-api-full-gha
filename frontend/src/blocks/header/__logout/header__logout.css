@@ -1,0 +1,15 @@
+.header__logout {
+  margin-left: 24px;
+  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  transition: opacity .3s ease-in-out;
+}
+
+.header__logout:hover {
+  opacity: .5;
+}

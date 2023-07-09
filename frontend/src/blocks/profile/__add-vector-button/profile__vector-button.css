@@ -1,0 +1,15 @@
+.profile__add-vector-button {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__add-vector-button {
+    width: 16px;
+    height: 16px;
+  }
+
+}

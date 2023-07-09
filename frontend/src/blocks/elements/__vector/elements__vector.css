@@ -1,0 +1,17 @@
+.elements__vector {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 22px;
+  height: 19px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  right: 20px;
+  bottom: 38px;
+  border: none;
+  transition: opacity .3s ease-in;
+}
+
+.elements__vector:hover {
+  opacity: .5;
+}
