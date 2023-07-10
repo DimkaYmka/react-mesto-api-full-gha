@@ -95,6 +95,8 @@ function App() {
       .catch(err => console.log(err));
   }
 
+  
+
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
   }

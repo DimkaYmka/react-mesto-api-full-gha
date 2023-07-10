@@ -7,9 +7,10 @@ function Card(card) {
   const currentUser = useContext(CurrentUserContext);
   // const isOwn = currentUser._id === card.ownerId
   const isOwn = card.ownerId === currentUser._id;
-  // console.log(card.ownerId);
+  console.log(card.owner);
+  console.log(card);
   // console.log(currentUser._id);
-  // console.log(card);
+  // console.log(cardId);
   // const isLiked = card.likes.some(i => i._id === currentUser._id);
   const isLiked = card.likes.some(i => i === currentUser._id);
   const cardLikeButtonClassName = !isLiked ? 'elements__vector' : 'elements__vector elements__vector_active';

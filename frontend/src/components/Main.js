@@ -33,7 +33,7 @@ function Main(props) {
         <ul className="elements__list">
           {props.cards.map(card => (
             <Card
-              ownerId={card.owner._id}
+              ownerId={card.owner}
               card={card}
               onCardClick={props.onCardClick}
               key={card._id}
