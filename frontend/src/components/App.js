@@ -57,7 +57,7 @@ function App() {
   }, [loggedIn]);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     api.changeLikeCardStatus(isLiked, card.id)
       .then((newCard) => {
@@ -65,6 +65,29 @@ function App() {
       })
       .catch(err => console.log(err));
   }
+  // const handleCardLike = (card) => {
+  //   const isLiked = card.likes.some(i => i === currentUser._id);
+  //   if (!isLiked) {
+  //     api.addLike(card.id)
+  //       .then((newCard) => {
+  //         setCards((state) => state.map((c) => {
+  //            return c._id === card.id ? newCard : c
+  //         }));
+  //       })
+  //       .catch(err => {
+  //         console.error(err);
+  //       })
+  //   } else {
+  //     api.deleteLike(card.id)
+  //       .then(newCard => {
+  //         setCards((state) => state.map((c) => c._id === card.id ? newCard : c));
+  //       })
+  //       .catch(err => {
+  //         console.error(err);
+  //       })
+  //   }
+  // }
+
 
   function handleCardDelete(cardId) {
     api.deleteCard(cardId)

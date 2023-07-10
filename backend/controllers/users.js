@@ -70,7 +70,7 @@ module.exports.login = (req, res, next) => {
             }, 'JWT_SECRET');
             // прикрепить его к куке
             res.cookie('jwt', token, {
-              maxAge: 360000,
+              maxAge: 3600000,
               httpOnly: true,
               sameSite: true,
             });

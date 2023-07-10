@@ -81,11 +81,12 @@ class Api {
       .then(this._getResponse);
     }
 
-    // addLike(data) {
-    //   return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
+    // addLike(cardId) {
+    //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
     //     method: 'PUT',
     //     headers: this._headers,
-    //     body: JSON.stringify(data)
+    //     credentials: 'include',
+    //     // body: JSON.stringify(data)
     //   })
     //   .then(this._getResponse);
     // }
@@ -93,7 +94,8 @@ class Api {
     // deleteLike(cardId) {
     //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
     //     method: 'DELETE',
-    //     headers: this._headers
+    //     headers: this._headers,
+    //     credentials: 'include',
     //   })
     //   .then(this._getResponse);
     // }
@@ -103,16 +105,18 @@ class Api {
           method: 'PATCH',
           credentials: 'include',
           headers: this._headers,
-          body: JSON.stringify(avatarUrl)
+          body: JSON.stringify({ avatar: avatarUrl })
         })
         .then(this._getResponse);
     }
+
+
 
     deleteCard(cardId) {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
         credentials: 'include',
-        // headers: this._headers
+        headers: this._headers
       })
       .then(this._getResponse);
     }

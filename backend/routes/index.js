@@ -15,6 +15,12 @@ const {
 const usersRouter = require('./users');
 const cardsRouter = require('./cards');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('The server is about to crash');
+  }, 0);
+});
+
 router.post('/signup', validationCreateUser, createUser);
 router.post('/signin', validationLogin, login);
 
