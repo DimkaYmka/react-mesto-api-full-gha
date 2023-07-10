@@ -12,6 +12,7 @@ function checkResponse(res) {
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
+    credentials: 'include',
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -31,19 +32,26 @@ export const authorize = (password, email) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({ password, email }),
   })
-    .then((res) => {
-      return checkResponse(res);
-    })
+  .then((res) => {
+    return checkResponse(res);
+  })
+  .then((data) => {
+    localStorage.setItem('userId', data._id)
+    return data;
+  })
+
 };
 
-  export const getContent = (jwt) => {
+  export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization" : `Bearer ${jwt}`
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       }
     })
       .then((res) => {
@@ -51,4 +59,14 @@ export const authorize = (password, email) => {
       })
   };
 
+  export const tokencheck = () => {
+    return fetch(`${BASE_URL}/users/me`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+      }
+    }).then(res => checkResponse(res))
+  } 
  

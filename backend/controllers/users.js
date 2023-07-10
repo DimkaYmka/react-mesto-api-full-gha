@@ -65,17 +65,17 @@ module.exports.login = (req, res, next) => {
         .then((isValidUser) => {
           if (isValidUser) {
             // создать JWT
-            const jwt = jsonWebToken.sign({
+            const token = jsonWebToken.sign({
               _id: user._id,
             }, 'JWT_SECRET');
             // прикрепить его к куке
-            res.cookie('jwt', jwt, {
+            res.cookie('jwt', token, {
               maxAge: 360000,
               httpOnly: true,
               sameSite: true,
             });
             // Если совпадает -- вернуть пользователя
-            res.send({ data: user.toJSON() });
+            res.send(user.toJSON());
           } else {
             // Если не совпадает -- вернуть ошибку
             return next(new AuthError('Неправильный логин или пароль'));

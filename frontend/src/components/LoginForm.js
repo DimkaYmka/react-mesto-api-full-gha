@@ -19,26 +19,30 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
     const { email, password } = formValue;
     console.log(formValue);
     auth.authorize(password, email)
+    // const token = localStorage.getItem('userId')
+      // .then(data => {
+      //   // console.log(data);
+      //   if (data._id) {
+      //     setLoggedIn(true)
+      //     // setUser(formValue.email)
+      //     // setUser(data.email);
+      //     handleLogin(formValue.email)
+      //     navigate("/", { replace: true });
+      //   }
+    // })
+        .then(data => {
+          if (data._id) {
+            localStorage.setItem('userId', data._id);
+            setLoggedIn(true)
+            // setUser(formValue.email)
+            // setUser(data.email);
+            handleLogin(formValue.email)
+            navigate("/", { replace: true });
+          }
+        })
+  
 
-      .then(data => {
-        // if (data.token) {
-        //   localStorage.setItem('jwt', data.token);
-        // if (data._id) {
-        //   localStorage.setItem('userId', data._id);
-        //   setLoggedIn(true)
-        //   // setUser(formValue.email)
-        //   // setUser(data.email);
-        //   handleLogin(formValue.email)
-        //   navigate("/", { replace: true });
-        // }
 
-          setLoggedIn(true)
-          // setUser(formValue.email)
-          // setUser(data.email);
-          handleLogin(formValue.email)
-          navigate("/", { replace: true });
-
-      })
       .catch((err) => {
         onInfoTooltipOpen({ isOpen: true, status: false });
         console.log(err);

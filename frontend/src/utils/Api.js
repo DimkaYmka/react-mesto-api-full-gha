@@ -25,7 +25,8 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
-      headers: this._headers
+      credentials: 'include',
+      // headers: this._headers
     })
       .then(this._getResponse)
   }
@@ -42,8 +43,9 @@ class Api {
 
     getUserData() {
       return fetch(`${this._baseUrl}/users/me`, {
-        headers: this._headers,
+        method: 'GET',
         credentials: 'include',
+        // headers: this._headers,
       })
       .then(this._getResponse)
     }
@@ -52,7 +54,9 @@ class Api {
     editUserData(userInfo) {
       return fetch(`${this._baseUrl}/users/me`, {
           method: 'PATCH',
+          credentials: 'include',
           headers: this._headers,
+          
           body: JSON.stringify(userInfo)
         })
         .then(this._getResponse)
@@ -62,6 +66,7 @@ class Api {
       return fetch(`${this._baseUrl}/cards`,{
         method: 'POST',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify(cardData)
       })
       .then(this._getResponse);
@@ -70,6 +75,7 @@ class Api {
     changeLikeCardStatus(isLiked, cardId) {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: isLiked ? 'DELETE' : 'PUT',
+        credentials: 'include',
         headers: this._headers,
       })
       .then(this._getResponse);
@@ -95,10 +101,9 @@ class Api {
     editUserAvatar(avatarUrl) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
           method: 'PATCH',
+          credentials: 'include',
           headers: this._headers,
-          body: JSON.stringify({
-            avatar : avatarUrl
-          })
+          body: JSON.stringify(avatarUrl)
         })
         .then(this._getResponse);
     }
@@ -106,7 +111,8 @@ class Api {
     deleteCard(cardId) {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
-        headers: this._headers
+        credentials: 'include',
+        // headers: this._headers
       })
       .then(this._getResponse);
     }

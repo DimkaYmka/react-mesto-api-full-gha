@@ -44,7 +44,8 @@ function App() {
   //     .catch(err => console.error(err));
   // }, []);
   useEffect(() => {
-    if (loggedIn) {
+    const token = localStorage.getItem('userId')
+    if (token) {
     Promise.all([api.getUserData(), api.getInitialCards()])
       .then(res => {
         const [userData, cardsArray] = res;
@@ -129,28 +130,26 @@ function App() {
     setUser(userName)
   }
 
-  const tokenCheck = () => {
+  const tokenCheck = (data) => {
     // const jwt = localStorage.getItem('jwt');
-    const jwt = localStorage.getItem('userId');
-    // if (jwt) {
-    //   auth.getContent(jwt)
-    //     .then(({ data }) => {
-    //       setLoggedIn(true);
-    //       setUser(data.email);
-    //       handleLogin(data.email)
-    //       navigate('/', {replace: true})
-    //     })
-
-      auth.getContent()
-        .then(({ data }) => {
+    const token = localStorage.getItem('userId');
+    if (token) {
+      console.log(token);
+      auth.getContent(data)
+        .then((data) => {
           setLoggedIn(true);
           setUser(data.email);
           handleLogin(data.email)
           navigate('/', {replace: true})
         })
-        .catch(err => console.log(err));
- 
+        .catch((err) => {
+          localStorage.removeItem('userId');
+          console.log(err)
+        });
+      }
   }
+
+  
 
   useEffect(() => {
     tokenCheck();
