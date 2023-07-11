@@ -21,13 +21,13 @@ router.get('/crash-test', () => {
   }, 0);
 });
 
-router.post('/api/signup', validationCreateUser, createUser);
-router.post('/api/signin', validationLogin, login);
+router.post('/signup', validationCreateUser, createUser);
+router.post('/signin', validationLogin, login);
 
 router.use(auth);
 
-router.use('/api/users', usersRouter);
-router.use('/api/cards', cardsRouter);
+router.use('/users', usersRouter);
+router.use('/cards', cardsRouter);
 router.use('/*', (req, res, next) => next(new NotFoundError('Страницы не существует')));
 
 module.exports = router;
