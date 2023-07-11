@@ -14,8 +14,8 @@ app.use(cors({
   origin: [
     'http://localhost:3001',
     'http://localhost:3000',
-    'https://mesto.project.learn.nomoredomains.work/',
-    'https://api.mesto.project.learn.nomoredomains.work/',
+    'https://mesto.project.learn.nomoredomains.workkk/',
+    'https://api.mesto.project.learn.nomoredomains.workkk/',
   ],
   credentials: true,
   maxAge: 30,
