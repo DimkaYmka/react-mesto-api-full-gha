@@ -9,18 +9,20 @@ const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cors({
-  origin: [
-    'http://localhost:3001',
-    'http://localhost:3000',
-    'http://mesto.project.learn.nomoredomains.work',
-    'http://api.mesto.project.learn.nomoredomains.work',
-    'https://mesto.project.learn.nomoredomains.work',
-    'https://api.mesto.project.learn.nomoredomains.work',
-  ],
-  credentials: true,
-  maxAge: 30,
-}));
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3001',
+//     'http://localhost:3000',
+//     'http://mesto.project.learn.nomoredomains.work',
+//     'http://api.mesto.project.learn.nomoredomains.work',
+//     'https://mesto.project.learn.nomoredomains.work',
+//     'https://api.mesto.project.learn.nomoredomains.work',
+//   ],
+//   credentials: true,
+//   maxAge: 30,
+// }));
+app.use(cors());
+
 const { PORT = 3000 } = process.env;
 app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
