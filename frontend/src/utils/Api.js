@@ -3,7 +3,7 @@ const apiOptions = {
   // baseAuthUrl: 'https://auth.nomoreparties.co',
   baseUrl: 'https://api.mesto.project.learn.nomoredomains.work',
   headers: {
-    authorization: 'bc440bce-88d2-40de-813f-9186a5211a71',
+    // authorization: 'bc440bce-88d2-40de-813f-9186a5211a71',
     'Content-Type': 'application/json'
   }
 };
