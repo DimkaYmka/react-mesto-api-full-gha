@@ -25,13 +25,13 @@ app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useNewUrlParser: true,
-});
-
-// mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
+// mongoose.connect('mongodb://localhost:27017/mestodb', {
 //   useNewUrlParser: true,
 // });
+
+mongoose.connect('mongodb://0.0.0.0:27017/mestodb', {
+  useNewUrlParser: true,
+});
 
 app.use(requestLogger);
 
