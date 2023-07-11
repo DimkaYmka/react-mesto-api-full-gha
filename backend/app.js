@@ -7,15 +7,15 @@ const cors = require('cors');
 
 const router = require('./routes');
 const handleError = require('./middlewares/handleError');
-const { requestLogger, errorLogger } = require('./middlewares/logger'); 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3001',
     'http://localhost:3000',
-   ' https://mesto.project.learn.nomoredomains.work',
-   ' https://api.mesto.project.learn.nomoredomains.work',
+    'https://mesto.project.learn.nomoredomains.work',
+    'https://api.mesto.project.learn.nomoredomains.work',
   ],
   credentials: true,
   maxAge: 30,
