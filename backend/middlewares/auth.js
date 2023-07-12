@@ -29,8 +29,8 @@ const auth = (req, res, next) => {
   // if (!authorization.startsWith('Bearer')) {
   //   return (new AuthError('Необходимо авторизоваться.'));
   // }
-  
-  const token = authorization.split('Bearer ')[1];
+
+  const token = authorization.replace('Bearer ', '');
   let payload;
   try {
     payload = jwt.verify(token, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
