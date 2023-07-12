@@ -74,7 +74,7 @@ module.exports.login = (req, res, next) => {
               maxAge: 3600000,
               httpOnly: true,
               sameSite: 'none',
-              // secure: false,
+              secure: true,
             });
             // Если совпадает -- вернуть пользователя
             res.send(user.toJSON());
