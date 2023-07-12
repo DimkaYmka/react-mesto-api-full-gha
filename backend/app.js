@@ -12,8 +12,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 app.use(cors({
   origin: [
-    // 'http://localhost:3001',
-    // 'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:3000',
     'http://mesto.project.learn.nomoredomains.work',
     'http://api.mesto.project.learn.nomoredomains.work',
     'https://mesto.project.learn.nomoredomains.work',
