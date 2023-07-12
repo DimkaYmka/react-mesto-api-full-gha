@@ -6,9 +6,9 @@ const auth = (req, res, next) => {
   const token = req.cookies.jwt;
   let payload;
 
-  if (!token) {
-    return next(new AuthError('Необходимо авторизоваться.'));
-  }
+  // if (!token) {
+  //   return next(new AuthError('Необходимо авторизоваться.'));
+  // }
 
   try {
     payload = jwt.verify(token, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret')
@@ -17,8 +17,10 @@ const auth = (req, res, next) => {
   }
 
   req.user = payload;
-  return next();
+  // return next();
 };
+
+
 
 module.exports = auth;
 
