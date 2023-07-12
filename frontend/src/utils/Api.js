@@ -1,12 +1,16 @@
 const apiOptions = {
-  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://localhost:3000',
   // baseAuthUrl: 'https://auth.nomoreparties.co',
-  baseUrl: 'https://api.mesto.project.learn.nomoredomains.work',
+  // baseUrl: 'https://api.mesto.project.learn.nomoredomains.work',
   headers: {
     // authorization: 'bc440bce-88d2-40de-813f-9186a5211a71',
     'Content-Type': 'application/json'
   }
 };
+
+const getJWTByLocalStorage = () =>{
+  return localStorage.getItem('token')
+}
 
 class Api {
   constructor(options) {
@@ -24,9 +28,11 @@ class Api {
 }
 
   getInitialCards() {
+    const token = getJWTByLocalStorage()
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       credentials: 'include',
+      authorization: `Bearer ${token}`,
       // headers: this._headers
     })
       .then(this._getResponse)
@@ -43,9 +49,11 @@ class Api {
     // }
 
     getUserData() {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'GET',
         credentials: 'include',
+        authorization: `Bearer ${token}`,
         // headers: this._headers,
       })
       .then(this._getResponse)
@@ -53,20 +61,23 @@ class Api {
   
     // 
     editUserData(userInfo) {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/users/me`, {
           method: 'PATCH',
           credentials: 'include',
           headers: this._headers,
-          
+          authorization: `Bearer ${token}`,
           body: JSON.stringify(userInfo)
         })
         .then(this._getResponse)
     }
 // 
     createCard(cardData) {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/cards`,{
         method: 'POST',
         headers: this._headers,
+        authorization: `Bearer ${token}`,
         credentials: 'include',
         body: JSON.stringify(cardData)
       })
@@ -74,10 +85,12 @@ class Api {
     }
 
     changeLikeCardStatus(isLiked, cardId) {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: isLiked ? 'DELETE' : 'PUT',
         credentials: 'include',
         headers: this._headers,
+        authorization: `Bearer ${token}`,
       })
       .then(this._getResponse);
     }
@@ -102,9 +115,11 @@ class Api {
     // }
 
     editUserAvatar(avatarUrl) {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/users/me/avatar`, {
           method: 'PATCH',
           credentials: 'include',
+          authorization: `Bearer ${token}`,
           headers: this._headers,
           body: JSON.stringify({ avatar: avatarUrl })
         })
@@ -114,9 +129,11 @@ class Api {
 
 
     deleteCard(cardId) {
+      const token = getJWTByLocalStorage()
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
         credentials: 'include',
+        authorization: `Bearer ${token}`,
         headers: this._headers
       })
       .then(this._getResponse);

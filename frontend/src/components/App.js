@@ -44,6 +44,10 @@ function App() {
   //     .catch(err => console.error(err));
   // }, []);
   useEffect(() => {
+    // const getJWTByLocalStorage = () =>{
+    //   return localStorage.getItem('token')
+    // }
+    // const token = getJWTByLocalStorage()
     const token = localStorage.getItem('userId')
     if (token) {
     Promise.all([api.getUserData(), api.getInitialCards()])

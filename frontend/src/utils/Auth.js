@@ -1,7 +1,7 @@
 
 
-// export const BASE_URL = "http://localhost:3000";
-export const BASE_URL = "https://api.mesto.project.learn.nomoredomains.work";
+export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://api.mesto.project.learn.nomoredomains.work";
 
 function checkResponse(res) {
   if (res.ok) {
@@ -53,6 +53,7 @@ export const authorize = (password, email) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
       }
     })
       .then((res) => {

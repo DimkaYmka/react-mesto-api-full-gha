@@ -39,6 +39,13 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
             handleLogin(formValue.email)
             navigate("/", { replace: true });
           }
+          // if (data.token) {
+          //   console.log(data.token);
+          //   localStorage.setItem('token', data.token);
+          //   setLoggedIn(true);
+          //   handleLogin(formValue.email)
+          //   navigate("/", { replace: true });
+          // }
         })
   
 
