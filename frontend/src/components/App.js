@@ -33,14 +33,8 @@ function App() {
 
   const navigate = useNavigate();
 
-
   // useEffect(() => {
-  //   // const getJWTByLocalStorage = () =>{
-  //   //   return localStorage.getItem('token')
-  //   // }
-  //   // const token =localStorage.getItem('token')
-  //   const token = localStorage.getItem('userId')
-  //   if (token) {
+
   //   Promise.all([api.getUserData(), api.getInitialCards()])
   //     .then(res => {
   //       const [userData, cardsArray] = res;
@@ -48,11 +42,14 @@ function App() {
   //       setCurrentUser(userData);
   //     })
   //     .catch(err => console.error(err));
-  //   }
-  // }, [loggedIn]);
-
+  // }, []);
   useEffect(() => {
-    if (loggedIn) {
+    // const getJWTByLocalStorage = () =>{
+    //   return localStorage.getItem('token')
+    // }
+    // const token = getJWTByLocalStorage()
+    const token = localStorage.getItem('userId')
+    if (token) {
     Promise.all([api.getUserData(), api.getInitialCards()])
       .then(res => {
         const [userData, cardsArray] = res;
@@ -72,7 +69,28 @@ function App() {
       })
       .catch(err => console.log(err));
   }
-
+  // const handleCardLike = (card) => {
+  //   const isLiked = card.likes.some(i => i === currentUser._id);
+  //   if (!isLiked) {
+  //     api.addLike(card.id)
+  //       .then((newCard) => {
+  //         setCards((state) => state.map((c) => {
+  //            return c._id === card.id ? newCard : c
+  //         }));
+  //       })
+  //       .catch(err => {
+  //         console.error(err);
+  //       })
+  //   } else {
+  //     api.deleteLike(card.id)
+  //       .then(newCard => {
+  //         setCards((state) => state.map((c) => c._id === card.id ? newCard : c));
+  //       })
+  //       .catch(err => {
+  //         console.error(err);
+  //       })
+  //   }
+  // }
 
 
   function handleCardDelete(cardId) {
@@ -142,9 +160,10 @@ function App() {
   }
 
   const tokenCheck = (data) => {
-    const token = localStorage.getItem('token');
-    // const token = localStorage.getItem('userId');
+    // const jwt = localStorage.getItem('jwt');
+    const token = localStorage.getItem('userId');
     if (token) {
+      console.log(token);
       auth.getContent(data)
         .then((data) => {
           setLoggedIn(true);
@@ -153,26 +172,11 @@ function App() {
           navigate('/', {replace: true})
         })
         .catch((err) => {
-          localStorage.removeItem('token');
+          localStorage.removeItem('userId');
           console.log(err)
         });
       }
   }
-
-  // const tokenCheck = () => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     auth.getContent(jwt)
-  //       .then(({ data }) => {
-  //         console.log(data);
-  //         setLoggedIn(true);
-  //         setUser(data.email);
-  //         handleLogin(data.email)
-  //         navigate('/', {replace: true})
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
-  // }
 
   
 
