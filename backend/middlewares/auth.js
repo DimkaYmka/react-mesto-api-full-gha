@@ -26,9 +26,10 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
-  if (!authorization.startsWith('Bearer')) {
-    return (new AuthError('Необходимо авторизоваться.'));
-  }
+  // if (!authorization.startsWith('Bearer')) {
+  //   return (new AuthError('Необходимо авторизоваться.'));
+  // }
+  
   const token = authorization.split('Bearer ')[1];
   let payload;
   try {
