@@ -11,6 +11,7 @@ function checkResponse(res) {
 }
 
 export const register = (password, email) => {
+  
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: 'include',
@@ -62,12 +63,13 @@ export const authorize = (password, email) => {
   };
 
   export const tokencheck = () => {
+    
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        // 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       }
     }).then(res => checkResponse(res))
   } 
