@@ -72,7 +72,7 @@ module.exports.login = (req, res, next) => {
             res.cookie('jwt', token, {
               maxAge: 3600000,
               httpOnly: true,
-              sameSite: true,
+              sameSite: 'none',
               secure: false,
             });
             // Если совпадает -- вернуть пользователя
