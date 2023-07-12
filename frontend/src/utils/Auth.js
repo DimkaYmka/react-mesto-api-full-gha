@@ -54,7 +54,7 @@ export const authorize = (password, email) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        "Authorization": `Bearer ${token}`
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then((res) => {
