@@ -153,7 +153,7 @@ function App() {
           navigate('/', {replace: true})
         })
         .catch((err) => {
-          localStorage.removeItem('userId');
+          localStorage.removeItem('token');
           console.log(err)
         });
       }
