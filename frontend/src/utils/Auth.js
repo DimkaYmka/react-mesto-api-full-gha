@@ -41,7 +41,7 @@ export const authorize = (password, email) => {
     return checkResponse(res);
   })
   .then((data) => {
-    localStorage.setItem('jwt', data.token)
+    localStorage.setItem('token', data.token)
     return data;
   })
 
@@ -54,7 +54,7 @@ export const authorize = (password, email) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     })
       .then((res) => {
@@ -69,7 +69,7 @@ export const authorize = (password, email) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     }).then(res => checkResponse(res))
   } 

@@ -35,7 +35,7 @@ class Api {
       method: 'GET',
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
       // headers: this._headers
     })
@@ -58,7 +58,7 @@ class Api {
       method: 'GET',
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
       // headers: this._headers,
     })
@@ -73,7 +73,7 @@ class Api {
       credentials: 'include',
 
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userInfo)
@@ -86,7 +86,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       credentials: 'include',
@@ -101,7 +101,7 @@ class Api {
       method: isLiked ? 'DELETE' : 'PUT',
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
     })
@@ -133,7 +133,7 @@ class Api {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ avatar: avatarUrl })
@@ -149,7 +149,7 @@ class Api {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
     })
