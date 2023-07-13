@@ -1,5 +1,6 @@
 const apiOptions = {
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl:  'https://api.mesto.project.learn.nomoredomains.work/signin',
   // baseAuthUrl: 'https://auth.nomoreparties.co',
   headers: {
     authorization: 'bc440bce-88d2-40de-813f-9186a5211a71',
