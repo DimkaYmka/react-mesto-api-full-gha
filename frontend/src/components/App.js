@@ -141,38 +141,38 @@ function App() {
     setUser(userName)
   }
 
-  const tokenCheck = (data) => {
-    const token = localStorage.getItem('token');
-    // const token = localStorage.getItem('userId');
-    if (token) {
-      auth.getContent(data)
-        .then((data) => {
-          setLoggedIn(true);
-          setUser(data.email);
-          handleLogin(data.email)
-          navigate('/', {replace: true})
-        })
-        .catch((err) => {
-          localStorage.removeItem('token');
-          console.log(err)
-        });
-      }
-  }
-
-  // const tokenCheck = () => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     auth.getContent(jwt)
-  //       .then(({ data }) => {
-  //         console.log(data);
+  // const tokenCheck = (data) => {
+  //   const token = localStorage.getItem('token');
+  //   // const token = localStorage.getItem('userId');
+  //   if (token) {
+  //     auth.getContent(data)
+  //       .then((data) => {
   //         setLoggedIn(true);
   //         setUser(data.email);
   //         handleLogin(data.email)
   //         navigate('/', {replace: true})
   //       })
-  //       .catch(err => console.log(err));
-  //   }
+  //       .catch((err) => {
+  //         localStorage.removeItem('token');
+  //         console.log(err)
+  //       });
+  //     }
   // }
+
+  const tokenCheck = () => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.getContent(jwt)
+        .then(( data ) => {
+          console.log(data);
+          setLoggedIn(true);
+          setUser(data.email);
+          handleLogin(data.email)
+          navigate('/', {replace: true})
+        })
+        .catch(err => console.log(err));
+    }
+  }
 
   
 
