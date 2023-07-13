@@ -28,7 +28,7 @@ const auth = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer '))  {
-    return (new AuthError('Необходимо авторизоваться.'));
+    return next(new AuthError('Необходимо авторизоваться.'));
   }
   const token = authorization.split('Bearer ')[1];
   let payload;
