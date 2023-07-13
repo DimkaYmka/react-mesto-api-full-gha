@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.73.41
+IP-адрес 158.160.73.41
 
 Frontend https://mesto.project.learn.nomoredomains.work
 

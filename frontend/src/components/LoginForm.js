@@ -14,63 +14,35 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
     setFormValue({ ...formValue, [name]: value })
   }
 
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   const { email, password } = formValue;
-  //   console.log(formValue);
-  //   auth.authorize(password, email)
-  //   // const token = localStorage.getItem('userId')
-  //     // .then(data => {
-  //     //   // console.log(data);
-  //     //   if (data._id) {
-  //     //     setLoggedIn(true)
-  //     //     // setUser(formValue.email)
-  //     //     // setUser(data.email);
-  //     //     handleLogin(formValue.email)
-  //     //     navigate("/", { replace: true });
-  //     //   }
-  //   // })
-  //       .then(data => {
-  //         if (data._id) {
-  //           localStorage.setItem('userId', data._id);
-  //           setLoggedIn(true)
-  //           // setUser(formValue.email)
-  //           // setUser(data.email);
-  //           handleLogin(formValue.email)
-  //           navigate("/", { replace: true });
-  //         }
-  //         // if (data.token) {
-  //         //   console.log(data.token);
-  //         //   localStorage.setItem('token', data.token);
-  //         //   setLoggedIn(true);
-  //         //   handleLogin(formValue.email)
-  //         //   navigate("/", { replace: true });
-  //         // }
-  //       })
-  
-
-
-  //     .catch((err) => {
-  //       onInfoTooltipOpen({ isOpen: true, status: false });
-  //       console.log(err);
-  //     })
-  // }
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { email, password } = formValue;
     console.log(formValue);
     auth.authorize(password, email)
+    // const token = localStorage.getItem('userId')
+      // .then(data => {
+      //   // console.log(data);
+      //   if (data._id) {
+      //     setLoggedIn(true)
+      //     // setUser(formValue.email)
+      //     // setUser(data.email);
+      //     handleLogin(formValue.email)
+      //     navigate("/", { replace: true });
+      //   }
+    // })
+        .then(data => {
+          if (data._id) {
+            localStorage.setItem('userId', data._id);
+            setLoggedIn(true)
+            // setUser(formValue.email)
+            // setUser(data.email);
+            handleLogin(formValue.email)
+            navigate("/", { replace: true });
+          }
+        })
+  
 
-      .then(data => {
-        if (data.token) {
-          localStorage.setItem('jwt', data.token);
-          setLoggedIn(true)
-          // setUser(formValue.email)
-          // setUser(data.email);
-          handleLogin(formValue.email)
-          navigate("/", { replace: true });
-        }
-      })
+
       .catch((err) => {
         onInfoTooltipOpen({ isOpen: true, status: false });
         console.log(err);

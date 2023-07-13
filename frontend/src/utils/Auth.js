@@ -1,7 +1,6 @@
 
 
-// export const BASE_URL = "http://localhost:3000";
-export const BASE_URL = "https://api.mesto.project.learn.nomoredomains.work";
+export const BASE_URL = "http://localhost:3000";
 
 function checkResponse(res) {
   if (res.ok) {
@@ -11,7 +10,6 @@ function checkResponse(res) {
 }
 
 export const register = (password, email) => {
-  
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: 'include',
@@ -31,7 +29,7 @@ export const authorize = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
-      // Accept: "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     credentials: 'include',
@@ -50,11 +48,10 @@ export const authorize = (password, email) => {
   export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then((res) => {
@@ -63,13 +60,12 @@ export const authorize = (password, email) => {
   };
 
   export const tokencheck = () => {
-    
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        // 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       }
     }).then(res => checkResponse(res))
   } 
