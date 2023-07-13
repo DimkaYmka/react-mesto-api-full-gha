@@ -32,7 +32,7 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
     // })
         .then(data => {
           if (data.token) {
-            localStorage.setItem('jwt', data.token);
+            localStorage.setItem('token', data.token);
             setLoggedIn(true)
             // setUser(formValue.email)
             // setUser(data.email);
