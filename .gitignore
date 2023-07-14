@@ -14,6 +14,17 @@ node_modules
 .idea
 .vscode
 
+# Logs
+logs
+*.log
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.idea
+.vscode
+
 build
 
 .env
