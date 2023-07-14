@@ -3,7 +3,6 @@
 const bcrypt = require('bcryptjs');
 const jsonWebToken = require('jsonwebtoken');
 const userSchema = require('../models/user');
-const { NODE_ENV, JWT_SECRET } = process.env;
 
 const NotFoundError = require('../errors/400');
 const AuthError = require('../errors/401');
@@ -66,20 +65,17 @@ module.exports.login = (req, res, next) => {
         .then((isValidUser) => {
           if (isValidUser) {
             // создать JWT
-            const token = jsonWebToken.sign({
+            const jwt = jsonWebToken.sign({
               _id: user._id,
-            }, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+            }, 'JWT_SECRET');
             // прикрепить его к куке
-            // res.cookie('jwt', token, {
-            //   maxAge: 3600000,
-            //   httpOnly: true,
-            //   sameSite: 'none',
-            //   secure: true,
-            // });
-            // // Если совпадает -- вернуть пользователя
-            // res.send(user.toJSON());
-            //return 
-            return res.send({ token });
+            res.cookie('jwt', jwt, {
+              maxAge: 360000,
+              httpOnly: true,
+              sameSite: true,
+            });
+            // Если совпадает -- вернуть пользователя
+            res.send({ data: user.toJSON() });
           } else {
             // Если не совпадает -- вернуть ошибку
             return next(new AuthError('Неправильный логин или пароль'));
