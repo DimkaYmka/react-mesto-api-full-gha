@@ -34,6 +34,22 @@ function App() {
   const navigate = useNavigate();
 
 
+  // useEffect(() => {
+  //   // const getJWTByLocalStorage = () =>{
+  //   //   return localStorage.getItem('token')
+  //   // }
+  //   // const token =localStorage.getItem('token')
+  //   const token = localStorage.getItem('userId')
+  //   if (token) {
+  //   Promise.all([api.getUserData(), api.getInitialCards()])
+  //     .then(res => {
+  //       const [userData, cardsArray] = res;
+  //       setCards(cardsArray);
+  //       setCurrentUser(userData);
+  //     })
+  //     .catch(err => console.error(err));
+  //   }
+  // }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -125,7 +141,23 @@ function App() {
     setUser(userName)
   }
 
-
+  // const tokenCheck = (data) => {
+  //   const token = localStorage.getItem('token');
+  //   // const token = localStorage.getItem('userId');
+  //   if (token) {
+  //     auth.getContent(data)
+  //       .then((data) => {
+  //         setLoggedIn(true);
+  //         setUser(data.email);
+  //         handleLogin(data.email)
+  //         navigate('/', {replace: true})
+  //       })
+  //       .catch((err) => {
+  //         localStorage.removeItem('token');
+  //         console.log(err)
+  //       });
+  //     }
+  // }
 
   const tokenCheck = () => {
     const jwt = localStorage.getItem('token');
