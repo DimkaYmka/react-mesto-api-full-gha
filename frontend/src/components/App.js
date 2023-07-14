@@ -53,13 +53,13 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-    Promise.all([api.getUserData(), api.getInitialCards()])
-      .then(res => {
-        const [userData, cardsArray] = res;
-        setCards(cardsArray);
-        setCurrentUser(userData);
-      })
-      .catch(err => console.error(err));
+      Promise.all([api.getUserData(), api.getInitialCards()])
+        .then(res => {
+          const [userData, cardsArray] = res;
+          setCards(cardsArray);
+          setCurrentUser(userData);
+        })
+        .catch(err => console.error(err));
     }
   }, [loggedIn]);
 
@@ -81,7 +81,7 @@ function App() {
       .catch(err => console.log(err));
   }
 
-  
+
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -163,28 +163,28 @@ function App() {
     const jwt = localStorage.getItem('token');
     if (jwt) {
       auth.getContent(jwt)
-        .then(( data ) => {
+        .then((data) => {
           console.log(data);
           setLoggedIn(true);
           setUser(data.email);
           handleLogin(data.email)
-          navigate('/', {replace: true})
+          navigate('/', { replace: true })
         })
         .catch(err => console.log(err));
     }
   }
 
-  
 
   useEffect(() => {
     tokenCheck();
   }, []);
 
+
   const handleLogout = () => {
     setLoggedIn(false);
     setUser("");
     localStorage.removeItem("jwt");
-};
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -210,13 +210,13 @@ function App() {
             />
             <Route path='/signin' element={
               <div >
-                <LoginForm setLoggedIn={setLoggedIn} handleLogin={handleLogin} onInfoTooltipOpen={setIsInfoTooltipOpen}   setUser={setUser}
-                  />
+                <LoginForm setLoggedIn={setLoggedIn} handleLogin={handleLogin} onInfoTooltipOpen={setIsInfoTooltipOpen} setUser={setUser}
+                />
               </div>} />
             <Route path='/signup' element={<div >
-              <RegisterForm onInfoTooltipOpen={setIsInfoTooltipOpen} setUser={setUser}/>
+              <RegisterForm onInfoTooltipOpen={setIsInfoTooltipOpen} setUser={setUser} />
             </div>} />
-            
+
             <Route path='*' element={<Navigate to='/' replace={true} />} />
 
           </Routes>
@@ -235,7 +235,7 @@ function App() {
         />
 
         <InfoTooltip
-           isOpenConfig={isInfoTooltipOpen}
+          isOpenConfig={isInfoTooltipOpen}
           onClose={closeAllPopups}
         />
       </div>

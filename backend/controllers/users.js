@@ -79,7 +79,7 @@ module.exports.login = (req, res, next) => {
             // // Если совпадает -- вернуть пользователя
             // res.send(user.toJSON());
             //return 
-            res.send({ token });
+            return res.send({ token });
           } else {
             // Если не совпадает -- вернуть ошибку
             return next(new AuthError('Неправильный логин или пароль'));
