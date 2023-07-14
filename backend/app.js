@@ -1,5 +1,7 @@
 require('dotenv').config;
 const express = require('express');
+const helmet = require('helmet');
+const Limit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
@@ -8,6 +10,13 @@ const cors = require('cors');
 const router = require('./routes');
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+const limiterSetting = {
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+};
 
 const app = express();
 app.use(cors({
@@ -25,6 +34,9 @@ app.use(cors({
 // app.use(cors());
 
 const { PORT = 3000 } = process.env;
+const limiter = Limit(limiterSetting);
+app.use(limiter);
+app.use(helmet());
 app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
