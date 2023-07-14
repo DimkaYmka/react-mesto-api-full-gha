@@ -183,7 +183,7 @@ function App() {
   const handleLogout = () => {
     setLoggedIn(false);
     setUser("");
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("token");
   };
 
   return (
