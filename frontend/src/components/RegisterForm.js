@@ -17,11 +17,9 @@ function Register({onInfoTooltipOpen}) {
     evt.preventDefault();
 
     const { email, password } = formValue;
-    console.log(formValue);
     auth.register(password, email)
 
       .then(data => {
-        console.log(data);
         navigate("/signin", { replace: true })
         onInfoTooltipOpen({ isOpen: true, status: true })
       })

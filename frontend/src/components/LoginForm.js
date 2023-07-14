@@ -19,23 +19,10 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
     const { email, password } = formValue;
     console.log(formValue);
     auth.authorize(password, email)
-    // const token = localStorage.getItem('userId')
-      // .then(data => {
-      //   // console.log(data);
-      //   if (data._id) {
-      //     setLoggedIn(true)
-      //     // setUser(formValue.email)
-      //     // setUser(data.email);
-      //     handleLogin(formValue.email)
-      //     navigate("/", { replace: true });
-      //   }
-    // })
         .then(data => {
           if (data.token) {
             localStorage.setItem('token', data.token);
             setLoggedIn(true)
-            // setUser(formValue.email)
-            // setUser(data.email);
             handleLogin(formValue.email)
             navigate("/", { replace: true });
           }
